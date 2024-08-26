@@ -2,13 +2,6 @@
 
 > es un plugin de barra de estado que se caracteriza por ser _estática_. Esta opción fue elegida para proporcionar una barra de estado simple y rápida, sin necesidad de una configuración adicional.
 
-
-![image01](https://github.com/GabrielRIP/my-assets/blob/main/plugs-lua/statusStatic/status01.png)
-![image02](https://github.com/GabrielRIP/my-assets/blob/main/plugs-lua/statusStatic/status02.png)
-![image03](https://github.com/GabrielRIP/my-assets/blob/main/plugs-lua/statusStatic/status03.png)
-![image04](https://github.com/GabrielRIP/my-assets/blob/main/plugs-lua/statusStatic/status04.png)
-![image05](https://github.com/GabrielRIP/my-assets/blob/main/plugs-lua/statusStatic/status05.png)
-
 ## ¿En qué se destaca?
 
 Se destaca por las siguientes características:
