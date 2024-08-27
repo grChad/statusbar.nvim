@@ -42,7 +42,7 @@ local file_size = function()
 end
 
 local file_icon = function()
-	local fileIcon = icons.others.file
+	local fileIcon = icons.others.empty
 	local fileIconColor = '#A6D189'
 	local background = '#292C3C'
 	local filename = (vim.fn.expand('%') == '' and 'Empty ') or vim.fn.expand('%:t')
@@ -78,5 +78,5 @@ return function()
 		finalStr = file_icon() .. str
 	end
 
-	return button(finalStr, 'ToggleFileName', 20)
+	return button(finalStr, 'ToggleFileName')
 end

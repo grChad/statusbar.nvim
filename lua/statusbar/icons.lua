@@ -6,7 +6,7 @@ M.separator = {
 	arrow = { left = '  ', right = '  ' },
 }
 
-M.diagnostic = { error = '', warning = '', hint = '', info = '' }
+M.diagnostic = { error = ' ', warning = ' ', hint = '󰌵 ', info = ' ' }
 
 M.git = { branch = '', add = '', remove = '', modifier = '' }
 
@@ -23,7 +23,7 @@ M.os = {
 	linux = '',
 }
 
-M.others = { file = '󰈙', lsp = '', directory = '󰉋' }
+M.others = { file = '󰈙', empty = '', lsp = ' ', directory = '󰉋', user = '󰀉 ' }
 
 M.ia = {
 	supermaven = ' ',

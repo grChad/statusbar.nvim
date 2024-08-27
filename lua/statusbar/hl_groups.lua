@@ -17,4 +17,11 @@ return {
 	iconColor = 'S_iconColor',
 	fileName = 'S_FileName',
 	fileSize = 'S_FileSize',
+
+	-- lsp
+	lspIcon = 'S_IconLsp',
+	error = 'DiagnosticSignError',
+	warn = 'DiagnosticSignWarn',
+	info = 'DiagnosticSignInfo',
+	hint = 'DiagnosticSignHint',
 }
