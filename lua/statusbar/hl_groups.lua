@@ -24,4 +24,9 @@ return {
 	warn = 'DiagnosticSignWarn',
 	info = 'DiagnosticSignInfo',
 	hint = 'DiagnosticSignHint',
+
+	-- ia
+	supermaven = 'S_Supermaven',
+	codeium = 'S_Codeium',
+	copilot = 'S_Copilot',
 }
