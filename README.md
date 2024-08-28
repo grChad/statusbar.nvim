@@ -8,8 +8,9 @@
 - [x] El estilo de la barra de estado es simple y minimalist, proporcionando solo la información esencial que necesita el usuario.
 - [x] **Clickeable!!:** Para tener más y más opciones. Lo puedes ver [aquí](#zonas-clickebles).
 - [x] Muestra el icono de [supermaven](https://github.com/supermaven-inc/supermaven-nvim), [codeium](https://github.com/Exafunction/codeium.vim).
-- [ ] Detecta automáticamente el nombre de usuario del sistema `whoami` y lo muestra junto al icono del sistema correspondiente.
-- [ ] El icono del sistema se adapta a una lista de sistemas operativos populares, como Fedora, Debian, Arch, Ubuntu, Manjaro, Linux Mint, Pop Os y Zorin. El icono de Linux es por defecto.
+- [x] Detecta automáticamente el nombre de usuario del sistema `whoami` y lo muestra junto al icono del sistema correspondiente.
+- [x] El icono del sistema se adapta a una lista de sistemas operativos populares, como Fedora, Debian, Arch, Ubuntu, Manjaro, Linux Mint, Pop Os y Zorin. El icono de Linux es por defecto.
+- [x] Directorio de trabajo con 3 modos de vista.
 
 ### Instalar
 
@@ -47,3 +48,5 @@ use {
 **supermaven:** Al dar click habilita y deshabilita [supermaven](https://github.com/supermaven-inc/supermaven-nvim)
 
 **Position:** Muestra o oculta el eje Y con un icono correspondiente.
+
+**Directorio:** Tiene 3 vistas que van cambiando y alternando con los clicks que reciba.

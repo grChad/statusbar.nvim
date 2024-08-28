@@ -13,16 +13,16 @@ M.diagnostic = { error = ' ', warning = ' ', hint = '󰌵 ', info = ' '
 M.git = { branch = '', add = '', remove = '', modifier = '' }
 
 M.os = {
-	fedora = '',
-	debian = '',
-	arch = '',
-	ubuntu = '',
-	manjaro = '',
-	mint = '',
-	pop_os = '',
-	zorin = '',
-	cereus = '󰶵',
-	linux = '',
+	fedora = ' ',
+	debian = ' ',
+	arch = ' ',
+	ubuntu = ' ',
+	manjaro = ' ',
+	mint = ' ',
+	pop_os = ' ',
+	zorin = ' ',
+	cereus = '󰶵 ',
+	linux = ' ',
 }
 
 M.others = { empty = '', lsp = ' ', directory = '󰉋 ', user = '󰀉 ' }

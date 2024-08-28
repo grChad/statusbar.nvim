@@ -1,25 +1,23 @@
 local M = {}
 
-local time = 10000
-
 M.toggle_file_name = function()
-	vim.g.s_filename_is_active = true
-	vim.api.nvim_command('redraw!')
-
-	vim.defer_fn(function()
+	if vim.g.s_filename_is_active then
 		vim.g.s_filename_is_active = false
-		vim.api.nvim_command('redraw!')
-	end, time)
+	else
+		vim.g.s_filename_is_active = true
+	end
+
+	vim.api.nvim_command('redraw!')
 end
 
 M.toggle_servers = function()
-	vim.g.s_servers_is_active = true
-	vim.api.nvim_command('redraw!')
-
-	vim.defer_fn(function()
+	if vim.g.s_servers_is_active then
 		vim.g.s_servers_is_active = false
-		vim.api.nvim_command('redraw!')
-	end, time)
+	else
+		vim.g.s_servers_is_active = true
+	end
+
+	vim.api.nvim_command('redraw!')
 end
 
 M.supermaven = function()
@@ -57,21 +55,26 @@ end
 M.position = function()
 	if vim.g.s_position_is_active then
 		vim.g.s_position_is_active = false
-		vim.api.nvim_command('redraw!')
 	else
 		vim.g.s_position_is_active = true
-		vim.api.nvim_command('redraw!')
 	end
+
+	vim.api.nvim_command('redraw!')
 end
 
 M.showCwd = function()
-	vim.g.s_show_cwd = true
+	vim.g.s_status_cwd = vim.g.s_status_cwd + 1
 	vim.api.nvim_command('redraw!')
+end
 
-	vim.defer_fn(function()
-		vim.g.s_show_cwd = false
-		vim.api.nvim_command('redraw!')
-	end, time)
+M.showUser = function()
+	if vim.g.s_show_user then
+		vim.g.s_show_user = false
+	else
+		vim.g.s_show_user = true
+	end
+
+	vim.api.nvim_command('redraw!')
 end
 
 return M

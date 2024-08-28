@@ -25,6 +25,21 @@ return {
 	info = 'DiagnosticSignInfo',
 	hint = 'DiagnosticSignHint',
 
+	-- git
+	gitIcon = 'S_GitIcon',
+
+	-- Linux
+	fedora = 'S_IconFedora',
+	debian = 'S_IconDebian',
+	arch = 'S_IconArch',
+	ubuntu = 'S_IconUbuntu',
+	manjaro = 'S_IconManjaro',
+	linuxMint = 'S_IconLinuxMint',
+	pop_os = 'S_IconPopOs',
+	zorin = 'S_IconZorin',
+	cereus = 'S_IconCereus',
+	linux = 'S_IconLinux',
+
 	-- directory
 	cwdIcon = 'S_CwdIcon',
 

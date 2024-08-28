@@ -29,20 +29,4 @@ M.separator = function()
 	return M.txt(hl_separator, str)
 end
 
----@param n number
----@param thresh number
----@return boolean
-M.widthPercentBelow = function(n, thresh)
-	---@type integer
-	local winwidth
-
-	if vim.o.laststatus == 3 then
-		winwidth = vim.o.columns
-	else
-		winwidth = vim.api.nvim_win_get_width(0)
-	end
-
-	return n / winwidth <= thresh
-end
-
 return M
