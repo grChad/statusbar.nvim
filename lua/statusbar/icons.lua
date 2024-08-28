@@ -28,8 +28,8 @@ M.os = {
 M.others = { empty = '', lsp = ' ', directory = '󰉋', user = '󰀉 ' }
 
 M.ia = {
-	supermaven = '  ',
-	codeium = '  ',
+	supermaven = ' ',
+	codeium = ' ',
 }
 
 return M
