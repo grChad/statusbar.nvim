@@ -29,4 +29,8 @@ return {
 	supermaven = 'S_Supermaven',
 	codeium = 'S_Codeium',
 	copilot = 'S_Copilot',
+
+	-- cursor position
+	position = 'S_Position',
+	positionBar = 'S_PositionBar',
 }

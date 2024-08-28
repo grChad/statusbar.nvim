@@ -6,6 +6,8 @@ M.separator = {
 	arrow = { left = '  ', right = '  ' },
 }
 
+M.percent_bar = { '▁', '▂', '▃', '▄', '▅', '▆', '▇', '█' }
+
 M.diagnostic = { error = ' ', warning = ' ', hint = '󰌵 ', info = ' ' }
 
 M.git = { branch = '', add = '', remove = '', modifier = '' }
@@ -23,7 +25,7 @@ M.os = {
 	linux = '',
 }
 
-M.others = { file = '󰈙', empty = '', lsp = ' ', directory = '󰉋', user = '󰀉 ' }
+M.others = { empty = '', lsp = ' ', directory = '󰉋', user = '󰀉 ' }
 
 M.ia = {
 	supermaven = '  ',

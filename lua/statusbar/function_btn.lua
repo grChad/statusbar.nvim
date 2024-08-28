@@ -54,4 +54,14 @@ M.codeium = function()
 	vim.cmd('redraw!')
 end
 
+M.position = function()
+	if vim.g.s_position_is_active then
+		vim.g.s_position_is_active = false
+		vim.api.nvim_command('redraw!')
+	else
+		vim.g.s_position_is_active = true
+		vim.api.nvim_command('redraw!')
+	end
+end
+
 return M
