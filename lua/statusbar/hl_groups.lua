@@ -1,6 +1,7 @@
 return {
 	separator = 'S_Separator',
-	normalText = 'S_NormalText',
+	text = 'S_Text',
+	textBold = 'S_TextBold',
 
 	-- modes
 	NormalMode = 'S_NormalMode',
@@ -15,7 +16,6 @@ return {
 
 	-- file name
 	iconColor = 'S_iconColor',
-	fileName = 'S_FileName',
 	fileSize = 'S_FileSize',
 
 	-- lsp
@@ -25,12 +25,14 @@ return {
 	info = 'DiagnosticSignInfo',
 	hint = 'DiagnosticSignHint',
 
+	-- directory
+	cwdIcon = 'S_CwdIcon',
+
 	-- ia
 	supermaven = 'S_Supermaven',
 	codeium = 'S_Codeium',
 	copilot = 'S_Copilot',
 
 	-- cursor position
-	position = 'S_Position',
-	positionBar = 'S_PositionBar',
+	iconPositionBar = 'S_PositionIconBar',
 }

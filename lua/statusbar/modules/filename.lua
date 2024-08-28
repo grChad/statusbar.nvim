@@ -67,7 +67,7 @@ end
 return function()
 	local fileName = (vim.fn.expand('%') == '' and 'Empty ') or vim.fn.expand('%:t')
 
-	local str = txt(hl.fileName, fileName)
+	local str = txt(hl.text, fileName)
 
 	---@type string
 	local finalStr

@@ -1,6 +1,6 @@
 local M = {}
 
-local time = 8000
+local time = 10000
 
 M.toggle_file_name = function()
 	vim.g.s_filename_is_active = true
@@ -62,6 +62,16 @@ M.position = function()
 		vim.g.s_position_is_active = true
 		vim.api.nvim_command('redraw!')
 	end
+end
+
+M.showCwd = function()
+	vim.g.s_show_cwd = true
+	vim.api.nvim_command('redraw!')
+
+	vim.defer_fn(function()
+		vim.g.s_show_cwd = false
+		vim.api.nvim_command('redraw!')
+	end, time)
 end
 
 return M

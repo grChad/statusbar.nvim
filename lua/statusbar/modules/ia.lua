@@ -33,9 +33,8 @@ M.supermaven = function()
 	else
 		showIcon = txt(hl.fileSize, icons.ia.supermaven)
 	end
-	local str = button(showIcon, 'ToggleSupermaven')
 
-	return separator .. str
+	return button(showIcon, 'ToggleSupermaven')
 end
 
 M.codeium = function()
@@ -53,9 +52,7 @@ M.codeium = function()
 	else
 		showIcon = txt(hl.codeium, icons.ia.codeium)
 	end
-	local str = button(showIcon, 'ToggleCodeium')
-
-	return separator .. str
+	return button(showIcon, 'ToggleCodeium')
 end
 
 return M

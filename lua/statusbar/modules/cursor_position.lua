@@ -13,13 +13,13 @@ vim.cmd([[
 
 ------------------------------------ [ functions ] ------------------------------------
 local positionX = function()
-	local str = 'X:%2c '
-	return txt(hl.position, str)
+	local str = 'X:%2c'
+	return txt(hl.textBold, str)
 end
 
 local positionY = function()
 	local position = ' Y:%2l/%2L '
-	return txt(hl.position, position)
+	return txt(hl.textBold, position)
 end
 
 local iconPercen = function()
@@ -29,7 +29,7 @@ local iconPercen = function()
 	local i = math.floor((curr_line - 1) / lines * #icon_percent) + 1
 	local str = string.rep(icon_percent[i], 2)
 
-	return txt(hl.positionBar, str .. ' ')
+	return txt(hl.iconPositionBar, str)
 end
 
 return function()
@@ -41,5 +41,5 @@ return function()
 		str = positionX()
 	end
 
-	return separator .. button(str, 'TogglePosition')
+	return separator .. button(str, 'TogglePosition') .. ' '
 end

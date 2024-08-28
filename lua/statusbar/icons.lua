@@ -25,7 +25,7 @@ M.os = {
 	linux = '',
 }
 
-M.others = { empty = '', lsp = ' ', directory = '󰉋', user = '󰀉 ' }
+M.others = { empty = '', lsp = ' ', directory = '󰉋 ', user = '󰀉 ' }
 
 M.ia = {
 	supermaven = ' ',
