@@ -47,7 +47,7 @@ return function()
 
 	-- add highlight group
 	branch = txt(hl.gitIcon, branch)
-	name_branch = txt(hl.text, name_branch)
+	name_branch = txt(hl.gitIcon, name_branch)
 
 	return diagnostics(git_status).icons .. branch .. name_branch .. separator
 end
