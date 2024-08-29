@@ -49,12 +49,24 @@ require('grbar').setup({
     color_icon = '#51A2DA'
     name = 'User', -- Elije tu nombre o tu nick
   },
+  ia = {
+    -- se requiere 'supermaven-inc/supermaven-nvim'
+    supermaven = {
+      enabled = false,
+      icon = ' ',
+      color_icon = '#6CC644',
+    },
+    -- se requiere 'Exafunction/codeium.vim'
+    codeium = {
+      enabled = false,
+      icon = ' ',
+      color_icon = '#09B6A2',
+    },
+  },
 })
 ```
 
 Los colores pueden ser por nombres como `black` o hexadecimales `'#181818'`. Y de preferencia el uso de hexadecimales.
-
-Las opciones son pocas. Pero con en tiempo ire agregando mas opciones.
 
 ## Zonas Clickebles
 

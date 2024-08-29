@@ -5,13 +5,30 @@ local cp = require('statusbar.constants').colors
 
 ---@param config GrConfig
 return function(config)
-	---@type GrConfig
-	config = validate.table(config, default)
+	local background, user_color_icon
+	local color_supermaven, color_codeium
 
-	local background = validate.str(config.background, default.background)
+	if validate.isTable(config) then
+		background = validate.str(config.background, default.background)
 
-	local user = validate.table(config.user, default.user)
-	local user_icon_color = validate.str(user.color_icon, default.user.color_icon)
+		if validate.isTable(config.user) then
+			user_color_icon = validate.str(config.user.color_icon, default.user.color_icon)
+		end
+
+		if validate.isTable(config.ia) then
+			if validate.isTable(config.ia.supermaven) then
+				color_supermaven = validate.str(config.ia.supermaven.color_icon, default.ia.supermaven.color_icon)
+			end
+			if validate.isTable(config.ia.codeium) then
+				color_codeium = validate.str(config.ia.codeium.color_icon, default.ia.codeium.color_icon)
+			end
+		end
+	else
+		background = default.background
+		user_color_icon = default.user.color_icon
+		color_supermaven = default.ia.supermaven.color_icon
+		color_codeium = default.ia.codeium.color_icon
+	end
 
 	local pre_hl = {
 		[hl.separator] = { fg = cp.whiteSmoke, bg = background },
@@ -36,14 +53,14 @@ return function(config)
 		[hl.gitIcon] = { fg = cp.git, bg = background },
 
 		-- user
-		[hl.userIcon] = { fg = user_icon_color, bg = background },
+		[hl.userIcon] = { fg = user_color_icon, bg = background },
 
 		-- PWD directory
 		[hl.cwdIcon] = { fg = cp.gold, bg = background },
 
 		-- Ia
-		[hl.codeium] = { fg = cp.codeium, bg = background },
-		[hl.supermaven] = { fg = cp.supermaven, bg = background },
+		[hl.supermaven] = { fg = color_supermaven, bg = background },
+		[hl.codeium] = { fg = color_codeium, bg = background },
 
 		-- position
 		[hl.iconPositionBar] = { fg = cp.green, bg = background },

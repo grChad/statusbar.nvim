@@ -1,4 +1,4 @@
-local default = require('statusbar.constants').opts_default.user
+local user_default = require('statusbar.constants').opts_default.user
 local validate = require('statusbar.utils').validate
 local hl = require('statusbar.constants').hl_groups
 local txt = require('statusbar.utils').txt
@@ -12,19 +12,27 @@ vim.cmd([[
 ]])
 
 ------------------------------------ [ functions ] ------------------------------------
----@param user GrConfigUser | nil
+---@param user GrConfigUser
 ---@return string
 return function(user)
-	---@type GrConfigUser
-	user = validate.table(user, default)
+	local enabled, icon, name
 
-	local is_enabled = validate.bool(user.enabled, default.enabled)
-	if is_enabled == false then
+	if validate.isTable(user) then
+		enabled = validate.bool(user.enabled, user_default.enabled)
+		icon = validate.str(user.icon, user_default.icon)
+		name = validate.str(user.name, user_default.name)
+	else
+		enabled = user_default.enabled
+		icon = user_default.icon
+		name = user_default.name
+	end
+
+	if not enabled then
 		return ''
 	end
 
-	local icon_os = txt(hl.userIcon, validate.str(user.icon, default.icon))
-	local user_name = txt(hl.text, validate.str(user.name, default.name))
+	local icon_os = txt(hl.userIcon, icon)
+	local user_name = txt(hl.text, name)
 
 	---@type string
 	local str

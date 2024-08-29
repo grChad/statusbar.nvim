@@ -53,5 +53,5 @@ return function()
 		end
 	end
 
-	return button(str, 'ShowCwd') .. ' '
+	return button(str, 'ShowCwd')
 end

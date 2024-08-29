@@ -30,6 +30,11 @@ M.separator = function()
 	return M.txt(hl_separator, str)
 end
 
+---@return string
+M.space = function()
+	return M.txt(hl_separator, ' ')
+end
+
 ---@param userStr string
 ---@param defaultStr string
 local validateStr = function(userStr, defaultStr)
@@ -43,7 +48,7 @@ local validateStr = function(userStr, defaultStr)
 	return userStr
 end
 
----@param userBool boolean
+---@param userBool boolean | nil
 ---@param defaultBool boolean
 local validateBool = function(userBool, defaultBool)
 	if userBool == nil then
@@ -54,21 +59,20 @@ local validateBool = function(userBool, defaultBool)
 	return userBool
 end
 
----@param userTable table | nil
----@param defaultTable table
-local validateTable = function(userTable, defaultTable)
-	if userTable == nil then
-		return defaultTable
-	elseif type(userTable) ~= 'table' then
-		return defaultTable
+---@param t table | nil
+local isTable = function(t)
+	if t == nil then
+		return false
+	elseif type(t) ~= 'table' then
+		return false
 	end
-	return userTable
+	return true
 end
 
 M.validate = {
 	str = validateStr,
 	bool = validateBool,
-	table = validateTable,
+	isTable = isTable,
 }
 
 return M

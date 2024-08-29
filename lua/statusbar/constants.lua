@@ -45,6 +45,18 @@ M.opts_default = {
 		color_icon = M.colors.fedora,
 		name = 'User',
 	},
+	ia = {
+		codeium = {
+			enabled = false,
+			icon = M.icons.ia.codeium,
+			color_icon = M.colors.codeium,
+		},
+		supermaven = {
+			enabled = false,
+			icon = M.icons.ia.supermaven,
+			color_icon = M.colors.supermaven,
+		},
+	},
 }
 
 M.hl_groups = {

@@ -16,6 +16,17 @@ vim.g.s_show_user = false
 vim.g.s_status_cwd = 0 -- % 3 == 0
 vim.g.s_position_is_active = false
 
+---@alias GrConfigUser { enabled?: boolean, icon?: string, color_icon?: string, name?: string }
+---@alias GrConfigIaCodeium { enabled?: boolean, icon?: string, color_icon?: string}
+---@alias GrConfigIaSupermaven { enabled?: boolean, icon?: string, color_icon?: string}
+---@alias GrConfigIa {codeium?: GrConfigIaCodeium, supermaven?: GrConfigIaSupermaven}
+
+---@class GrConfig
+---@field background? string
+---@field user? GrConfigUser
+---@field ia? GrConfigIa
+
+---@type GrConfig
 local opts = {}
 
 local M = {}
@@ -30,18 +41,13 @@ M.StatusLine = function()
 		git(),
 		user(opts.user),
 		directory(),
-		ia.supermaven(),
-		ia.codeium(),
+		ia.supermaven(opts.ia),
+		ia.codeium(opts.ia),
 		position(),
 	})
 end
 
----@alias GrConfigUser { enabled?: boolean, icon?: string, color_icon?: string, name?: string }
-
----@class GrConfig
----@field background? string | nil
----@field user? GrConfigUser | nil
----@param config GrConfig | nil
+---@param config? GrConfig
 M.setup = function(config)
 	local count_configs = 0
 
