@@ -12,16 +12,18 @@ vim.g.s_show_user = false
 vim.g.s_status_cwd = 0 -- % 3 == 0
 vim.g.s_position_is_active = false
 
+local opts = {}
+
 local M = {}
 
-function M.run()
+M.StatusLine = function()
 	return table.concat({
 		modes(),
-		filename(),
+		filename(opts.background),
 		lsp(),
 		'%=',
 		'%=',
-		user(),
+		user(opts.user),
 		directory(),
 		ia.supermaven(),
 		ia.codeium(),
@@ -29,8 +31,28 @@ function M.run()
 	})
 end
 
-M.setup = function()
-	vim.opt.statusline = "%!v:lua.require('grbar').run()"
+---@alias GrConfigUser { enabled?: boolean, icon?: string, color_icon?: string, name?: string }
+
+---@class GrConfig
+---@field background? string | nil
+---@field user? GrConfigUser | nil
+---@param config GrConfig | nil
+M.setup = function(config)
+	local count_configs = 0
+
+	if type(config) == 'table' and config ~= nil then
+		for _ in pairs(config) do
+			count_configs = count_configs + 1
+		end
+
+		if count_configs > 0 then
+			opts = config
+		end
+	end
+
+	require('statusbar.highlights')(opts)
+
+	vim.o.statusline = "%!v:lua.require('grbar').StatusLine()"
 end
 
 return M

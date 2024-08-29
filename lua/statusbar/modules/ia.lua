@@ -1,8 +1,7 @@
-local icons = require('statusbar.icons')
-local separator = require('statusbar.utils').separator()
+local icons_ia = require('statusbar.constants').icons.ia
 local txt = require('statusbar.utils').txt
 local button = require('statusbar.utils').button
-local hl = require('statusbar.hl_groups')
+local hl = require('statusbar.constants').hl_groups
 
 --------------------------------- [ btn onclick function ] ---------------------------
 vim.cmd([[
@@ -29,9 +28,9 @@ M.supermaven = function()
 	local showIcon
 
 	if api.is_running() then
-		showIcon = txt(hl.supermaven, icons.ia.supermaven)
+		showIcon = txt(hl.supermaven, icons_ia.supermaven)
 	else
-		showIcon = txt(hl.fileSize, icons.ia.supermaven)
+		showIcon = txt(hl.subText, icons_ia.supermaven)
 	end
 
 	return button(showIcon, 'ToggleSupermaven')
@@ -48,9 +47,9 @@ M.codeium = function()
 	local showIcon
 
 	if codeium == 'OFF' then
-		showIcon = txt(hl.fileSize, icons.ia.codeium)
+		showIcon = txt(hl.subText, icons_ia.codeium)
 	else
-		showIcon = txt(hl.codeium, icons.ia.codeium)
+		showIcon = txt(hl.codeium, icons_ia.codeium)
 	end
 	return button(showIcon, 'ToggleCodeium')
 end

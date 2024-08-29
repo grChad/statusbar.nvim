@@ -1,5 +1,5 @@
-local icon_directory = require('statusbar.icons').others.directory
-local hl = require('statusbar.hl_groups')
+local icon_directory = require('statusbar.constants').icons.others.directory
+local hl = require('statusbar.constants').hl_groups
 local txt = require('statusbar.utils').txt
 local button = require('statusbar.utils').button
 

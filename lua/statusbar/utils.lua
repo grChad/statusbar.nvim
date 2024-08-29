@@ -1,6 +1,7 @@
+local icon_separator = require('statusbar.constants').icons.separator.line
+local hl_separator = require('statusbar.constants').hl_groups.separator
+
 local M = {}
-local icon_separator = require('statusbar.icons').separator.line
-local hl_separator = require('statusbar.hl_groups').separator
 
 ---@param hl string
 ---@param str string
@@ -28,5 +29,46 @@ M.separator = function()
 
 	return M.txt(hl_separator, str)
 end
+
+---@param userStr string
+---@param defaultStr string
+local validateStr = function(userStr, defaultStr)
+	if userStr == nil then
+		return defaultStr
+	elseif userStr == '' then
+		return defaultStr
+	elseif type(userStr) ~= 'string' then
+		return defaultStr
+	end
+	return userStr
+end
+
+---@param userBool boolean
+---@param defaultBool boolean
+local validateBool = function(userBool, defaultBool)
+	if userBool == nil then
+		return defaultBool
+	elseif type(userBool) ~= 'boolean' then
+		return defaultBool
+	end
+	return userBool
+end
+
+---@param userTable table | nil
+---@param defaultTable table
+local validateTable = function(userTable, defaultTable)
+	if userTable == nil then
+		return defaultTable
+	elseif type(userTable) ~= 'table' then
+		return defaultTable
+	end
+	return userTable
+end
+
+M.validate = {
+	str = validateStr,
+	bool = validateBool,
+	table = validateTable,
+}
 
 return M

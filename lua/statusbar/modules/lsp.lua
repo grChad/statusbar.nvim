@@ -1,8 +1,8 @@
 local separator = require('statusbar.utils').separator()
-local icons = require('statusbar.icons')
+local icons = require('statusbar.constants').icons
 local txt = require('statusbar.utils').txt
 local button = require('statusbar.utils').button
-local hl = require('statusbar.hl_groups')
+local hl = require('statusbar.constants').hl_groups
 
 --------------------------------- [ btn onclick function ] ---------------------------
 vim.cmd([[

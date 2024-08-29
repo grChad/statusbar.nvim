@@ -1,7 +1,9 @@
-local icons = require('statusbar.icons')
-local hl = require('statusbar.hl_groups')
+local icons = require('statusbar.constants').icons
+local hl = require('statusbar.constants').hl_groups
 local txt = require('statusbar.utils').txt
 local button = require('statusbar.utils').button
+local validate = require('statusbar.utils').validate
+local bg_default = require('statusbar.constants').opts_default.background
 
 --------------------------------- [ btn onclick function ] ---------------------------
 vim.cmd([[
@@ -35,16 +37,16 @@ local file_size = function()
 	local str = string.format('%s', format(fsize))
 
 	if fsize > 0 then
-		return txt(hl.fileSize, icon .. str)
+		return txt(hl.subText, icon .. str)
 	end
 
 	return ''
 end
 
-local file_icon = function()
+---@param background string
+local file_icon = function(background)
 	local fileIcon = icons.others.empty
 	local fileIconColor = '#A6D189'
-	local background = '#292C3C'
 	local filename = (vim.fn.expand('%') == '' and 'Empty ') or vim.fn.expand('%:t')
 	local extension = vim.fn.expand('%:e')
 
@@ -59,12 +61,15 @@ local file_icon = function()
 		end
 	end
 
-	vim.api.nvim_set_hl(0, hl.iconColor, { fg = fileIconColor, bg = background })
+	vim.api.nvim_set_hl(0, hl.iconFtColor, { fg = fileIconColor, bg = background })
 
-	return txt(hl.iconColor, ' ' .. fileIcon .. ' ')
+	return txt(hl.iconFtColor, ' ' .. fileIcon .. ' ')
 end
 
-return function()
+---@param bg string
+return function(bg)
+	bg = validate.str(bg, bg_default)
+
 	local fileName = (vim.fn.expand('%') == '' and 'Empty ') or vim.fn.expand('%:t')
 
 	local str = txt(hl.text, fileName)
@@ -73,9 +78,9 @@ return function()
 	local finalStr
 
 	if vim.g.s_filename_is_active then
-		finalStr = file_icon() .. str .. file_size()
+		finalStr = file_icon(bg) .. str .. file_size()
 	else
-		finalStr = file_icon() .. str
+		finalStr = file_icon(bg) .. str
 	end
 
 	return button(finalStr, 'ToggleFileName')

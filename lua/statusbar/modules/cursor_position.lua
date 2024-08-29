@@ -1,7 +1,7 @@
 local button = require('statusbar.utils').button
 local txt = require('statusbar.utils').txt
-local hl = require('statusbar.hl_groups')
-local percent_bar = require('statusbar.icons').percent_bar
+local hl = require('statusbar.constants').hl_groups
+local percent_bar = require('statusbar.constants').icons.percent_bar
 local separator = require('statusbar.utils').separator()
 
 --------------------------------- [ btn onclick function ] ---------------------------
