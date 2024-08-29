@@ -13,14 +13,21 @@ return function(config)
 
 		if validate.isTable(config.user) then
 			user_color_icon = validate.str(config.user.color_icon, default.user.color_icon)
+		else
+			user_color_icon = default.user.color_icon
 		end
 
 		if validate.isTable(config.ia) then
 			if validate.isTable(config.ia.supermaven) then
 				color_supermaven = validate.str(config.ia.supermaven.color_icon, default.ia.supermaven.color_icon)
+			else
+				color_supermaven = default.ia.supermaven.color_icon
 			end
+
 			if validate.isTable(config.ia.codeium) then
 				color_codeium = validate.str(config.ia.codeium.color_icon, default.ia.codeium.color_icon)
+			else
+				color_codeium = default.ia.codeium.color_icon
 			end
 		end
 	else

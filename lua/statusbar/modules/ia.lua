@@ -30,6 +30,9 @@ M.supermaven = function(opt_ia)
 		if validate.isTable(opt_ia.supermaven) then
 			enabled = validate.bool(opt_ia.supermaven.enabled, default_ia.supermaven.enabled)
 			icon = validate.str(opt_ia.supermaven.icon, default_ia.supermaven.icon)
+		else
+			enabled = default_ia.supermaven.enabled
+			icon = default_ia.supermaven.icon
 		end
 	else
 		enabled = default_ia.supermaven.enabled
@@ -60,6 +63,9 @@ M.codeium = function(opt_ia)
 		if validate.isTable(opt_ia.codeium) then
 			enabled = validate.bool(opt_ia.codeium.enabled, default_ia.codeium.enabled)
 			icon = validate.str(opt_ia.codeium.icon, default_ia.codeium.icon)
+		else
+			enabled = default_ia.codeium.enabled
+			icon = default_ia.codeium.icon
 		end
 	else
 		enabled = default_ia.codeium.enabled
