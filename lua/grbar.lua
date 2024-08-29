@@ -1,6 +1,10 @@
+-- [left] modules
 local modes = require('statusbar.modules.modes')
 local filename = require('statusbar.modules.filename')
 local lsp = require('statusbar.modules.lsp')
+
+-- [right] modules
+local git = require('statusbar.modules.git')
 local user = require('statusbar.modules.user')
 local directory = require('statusbar.modules.directory')
 local position = require('statusbar.modules.cursor_position')
@@ -23,6 +27,7 @@ M.StatusLine = function()
 		lsp(),
 		'%=',
 		'%=',
+		git(),
 		user(opts.user),
 		directory(),
 		ia.supermaven(),

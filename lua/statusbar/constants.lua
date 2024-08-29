@@ -29,7 +29,7 @@ M.icons = {
 	},
 	percent_bar = { '▁', '▂', '▃', '▄', '▅', '▆', '▇', '█' },
 	diagnostic = { error = ' ', warning = ' ', hint = '󰌵 ', info = ' ' },
-	git = { branch = '', add = ' ', remove = ' ', modifier = ' ' },
+	git = { branch = ' ', add = '  ', remove = '  ', change = '  ' },
 	others = { empty = '', lsp = ' ', directory = '󰉋 ', user = ' ' },
 	ia = {
 		supermaven = ' ',
@@ -75,6 +75,9 @@ M.hl_groups = {
 
 	-- git
 	gitIcon = 'S_GitIcon',
+	gitAdd = 'GitSignsAdd',
+	gitRemove = 'GitSignsDelete',
+	gitChange = 'GitSignsChange',
 
 	-- Linux
 	userIcon = 'S_UserIcon',
