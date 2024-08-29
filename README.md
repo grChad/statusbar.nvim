@@ -68,6 +68,8 @@ require('grbar').setup({
 
 Los colores pueden ser por nombres como `black` o hexadecimales `'#181818'`. Y de preferencia el uso de hexadecimales.
 
+Los iconos deben tener 2 espacios, mas o menos rompería el diseño
+
 ## Zonas Clickebles
 
 **filename:** Permite visualizar cuanto pesa el archivo.
