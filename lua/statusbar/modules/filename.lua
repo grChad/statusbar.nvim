@@ -2,7 +2,7 @@ local icons = require('statusbar.constants').icons
 local hl = require('statusbar.constants').hl_groups
 local txt = require('statusbar.utils').txt
 local button = require('statusbar.utils').button
-local validate = require('statusbar.utils').validate
+local selectStr = require('statusbar.utils').selectStr
 local bg_default = require('statusbar.constants').opts_default.background
 
 --------------------------------- [ btn onclick function ] ---------------------------
@@ -68,7 +68,7 @@ end
 
 ---@param bg string
 return function(bg)
-	bg = validate.str(bg, bg_default)
+	bg = selectStr(bg, bg_default)
 
 	local fileName = (vim.fn.expand('%') == '' and 'Empty ') or vim.fn.expand('%:t')
 
