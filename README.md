@@ -42,11 +42,15 @@ Opciones por defecto. Puedes modificar parcial o totalmente todas las opciones.
 ```lua
 require('grbar').setup({
     background = '#292C3C'
-    user = {
-        enabled = true, -- false para desactivarlo
-        icon = ' ',
-        color_icon = '#51A2DA'
-        name = 'User', -- Elije tu nombre o tu nick
+    lsp = {
+        icon_error = ' '
+        color_error = '#E78284',
+        icon_warning = ' ',
+        color_warning =  '#E5C890',
+        icon_hint = '󰌵 ',
+        color_hint = '#79dac8',
+        icon_info = ' ',
+        color_info = '#99D1DB',
     },
     git = {
         icon_add = '',
@@ -57,6 +61,12 @@ require('grbar').setup({
         color_change = '#E5C890',
         icon_branch = '',
         color_branch = '#f26359',
+    },
+    user = {
+        enabled = true, -- false para desactivarlo
+        icon = ' ',
+        color_icon = '#51A2DA'
+        name = 'User', -- Elije tu nombre o tu nick
     },
     ia = {
         supermaven = {

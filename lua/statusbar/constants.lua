@@ -4,23 +4,22 @@ M.colors = {
 	gold = '#DAA520',
 	blue_1 = '#7DC8FC',
 	blue_2 = '#51AFEF',
+	orange = '#FF8800',
+	red = '#E78284',
+	yellow = '#E5C890',
+	sky = '#99D1DB',
 	teal_1 = '#79dac8',
 	teal_2 = '#3CD2D2',
-	red = '#ff6c6b',
-	green = '#35BF5C',
-	orange = '#FF8800',
+	green_1 = '#B2E292',
+	green_2 = '#35BF5C',
 
 	whiteSmoke = '#DCD9D5',
 	text = '#C6D0F5',
 	subtext = '#a5adce',
-	mantle = '#292C3C',
+	crust = '#232634',
 	dark = '#181818',
 
 	git = '#f26359',
-	gitAdd = '#B2E292',
-	gitRemove = '#E78284',
-	gitChange = '#E5C890',
-
 	fedora = '#51A2DA',
 	supermaven = '#6CC644',
 	codeium = '#09B6A2',
@@ -42,20 +41,30 @@ M.icons = {
 }
 
 M.opts_default = {
-	background = M.colors.mantle,
+	background = M.colors.crust,
 	user = {
 		enabled = true,
 		icon = M.icons.others.user,
 		color_icon = M.colors.fedora,
 		name = 'User',
 	},
+	lsp = {
+		icon_error = M.icons.diagnostic.error,
+		color_error = M.colors.red,
+		icon_warning = M.icons.diagnostic.warning,
+		color_warning = M.colors.yellow,
+		icon_hint = M.icons.diagnostic.hint,
+		color_hint = M.colors.teal_1,
+		icon_info = M.icons.diagnostic.info,
+		color_info = M.colors.sky,
+	},
 	git = {
 		icon_add = M.icons.git.add,
-		color_add = M.colors.gitAdd,
+		color_add = M.colors.green_1,
 		icon_remove = M.icons.git.remove,
-		color_remove = M.colors.gitRemove,
+		color_remove = M.colors.red,
 		icon_change = M.icons.git.change,
-		color_change = M.colors.gitChange,
+		color_change = M.colors.yellow,
 		icon_branch = M.icons.git.branch,
 		color_branch = M.colors.git,
 	},
@@ -94,10 +103,10 @@ M.hl_groups = {
 
 	-- lsp
 	lspIcon = 'S_IconLsp',
-	error = 'DiagnosticSignError',
-	warn = 'DiagnosticSignWarn',
-	info = 'DiagnosticSignInfo',
-	hint = 'DiagnosticSignHint',
+	lspError = 'S_DiagnosticSignError',
+	lspWarning = 'S_DiagnosticSignWarn',
+	lspInfo = 'S_DiagnosticSignInfo',
+	lspHint = 'S_DiagnosticSignHint',
 
 	-- git
 	gitIcon = 'S_GitIcon',

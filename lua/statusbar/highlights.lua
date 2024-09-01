@@ -9,18 +9,25 @@ return function(config)
 	config = selectTable(config, default)
 	local background = selectStr(config.background, default.background)
 
-	---@type GrConfigUser --------------------------------------------------------------
+	---@type GrConfigLsp ----------------------------------------------------------------
+	local table_lsp = selectTable(config.lsp, default.lsp)
+	local color_lsp_error = selectStr(table_lsp.color_error, default.lsp.color_error)
+	local color_lsp_warning = selectStr(table_lsp.color_warning, default.lsp.color_warning)
+	local color_lsp_hint = selectStr(table_lsp.color_hint, default.lsp.color_hint)
+	local color_lsp_info = selectStr(table_lsp.color_info, default.lsp.color_info)
+
+	---@type GrConfigUser ---------------------------------------------------------------
 	local table_user = selectTable(config.user, default.user)
 	local user_color_icon = selectStr(table_user.color_icon, default.user.color_icon)
 
-	---@type GrConfigGit ---------------------------------------------------------------
+	---@type GrConfigGit ----------------------------------------------------------------
 	local table_git = selectTable(config.git, default.git)
 	local color_add = selectStr(table_git.color_add, default.git.color_add)
 	local color_remove = selectStr(table_git.color_remove, default.git.color_remove)
 	local color_change = selectStr(table_git.color_change, default.git.color_remove)
 	local color_branch = selectStr(table_git.color_branch, default.git.color_branch)
 
-	---@type GrConfigIa ----------------------------------------------------------------
+	---@type GrConfigIa -----------------------------------------------------------------
 	local table_ia = selectTable(config.ia, default.ia)
 
 	---@type GrConfigIaSupermaven
@@ -31,6 +38,7 @@ return function(config)
 	local table_codeium = selectTable(table_ia.codeium, default.ia.codeium)
 	local color_codeium = selectStr(table_codeium.color_icon, default.ia.codeium.color_icon)
 
+	-- NOTE: if you want to change the colors of the icons, you need to change the hl_groups
 	local pre_hl = {
 		[hl.separator] = { fg = cp.whiteSmoke, bg = background },
 		[hl.text] = { fg = cp.text, bg = background },
@@ -44,11 +52,15 @@ return function(config)
 		[hl.replaceMode] = { fg = cp.dark, bg = cp.red, bold = true },
 		[hl.terminalMode] = { fg = cp.dark, bg = cp.blue_1, bold = true },
 		[hl.confirmMode] = { fg = cp.dark, bg = cp.teal_2, bold = true },
-		[hl.commandMode] = { fg = cp.dark, bg = cp.green, bold = true },
+		[hl.commandMode] = { fg = cp.dark, bg = cp.green_2, bold = true },
 		[hl.selectMode] = { fg = cp.dark, bg = cp.orange, bold = true },
 
 		-- LSP
 		[hl.lspIcon] = { fg = cp.blue_2, bg = background },
+		[hl.lspError] = { fg = color_lsp_error, bg = background },
+		[hl.lspWarning] = { fg = color_lsp_warning, bg = background },
+		[hl.lspInfo] = { fg = color_lsp_info, bg = background },
+		[hl.lspHint] = { fg = color_lsp_hint, bg = background },
 
 		-- Git
 		[hl.gitIcon] = { fg = color_branch, bg = background },
@@ -67,7 +79,7 @@ return function(config)
 		[hl.codeium] = { fg = color_codeium, bg = background },
 
 		-- position
-		[hl.iconPositionBar] = { fg = cp.green, bg = background },
+		[hl.iconPositionBar] = { fg = cp.green_2, bg = background },
 	}
 
 	for hl_group, values in pairs(pre_hl) do

@@ -3,6 +3,10 @@ local icons = require('statusbar.constants').icons
 local txt = require('statusbar.utils').txt
 local button = require('statusbar.utils').button
 local hl = require('statusbar.constants').hl_groups
+local selectTable = require('statusbar.utils').selectTable
+local selectStr = require('statusbar.utils').selectStr
+local default_lsp = require('statusbar.constants').opts_default.lsp
+local trimAndPad = require('statusbar.utils').trimAndPad
 
 --------------------------------- [ btn onclick function ] ---------------------------
 vim.cmd([[
@@ -12,7 +16,7 @@ vim.cmd([[
 ]])
 
 ------------------------------------ [ functions ] ------------------------------------
-local servers_name = function()
+local getServers = function()
 	local icon = icons.separator.arrow.right
 	local servers = {}
 
@@ -30,15 +34,15 @@ local servers_name = function()
 	return { str = str, hasLsp = #servers > 0 }
 end
 
-local diagnostic = function()
+local diagnostic = function(error, warning, hint, info)
 	if not rawget(vim, 'lsp') then
 		return ''
 	end
 
-	local i_error = txt(hl.error, icons.diagnostic.error)
-	local i_warn = txt(hl.warn, icons.diagnostic.warning)
-	local i_hint = txt(hl.hint, icons.diagnostic.hint)
-	local i_info = txt(hl.info, icons.diagnostic.info)
+	local i_error = txt(hl.lspError, trimAndPad(error, 2))
+	local i_warn = txt(hl.lspWarning, trimAndPad(warning, 2))
+	local i_hint = txt(hl.lspHint, trimAndPad(hint, 2))
+	local i_info = txt(hl.lspInfo, trimAndPad(info, 2))
 
 	local messages = {
 		{ severity = vim.diagnostic.severity.ERROR, hl = i_error },
@@ -64,21 +68,29 @@ local diagnostic = function()
 	return caret_right .. message_str
 end
 
-return function()
-	local lspIcon = txt(hl.lspIcon, icons.others.lsp)
-	local servers = servers_name().str
-	local hasLsp = servers_name().hasLsp
+return function(table_lsp)
+	---@type GrConfigLsp
+	table_lsp = selectTable(table_lsp, default_lsp)
+	local i_err = selectStr(table_lsp.icon_error, default_lsp.icon_error)
+	local i_warn = selectStr(table_lsp.icon_warning, default_lsp.icon_warning)
+	local i_hint = selectStr(table_lsp.icon_hint, default_lsp.icon_hint)
+	local i_info = selectStr(table_lsp.icon_info, default_lsp.icon_info)
 
-	if not hasLsp then
+	local lspIcon = txt(hl.lspIcon, icons.others.lsp)
+	local servers = getServers()
+
+	local icon_diagnostics = diagnostic(i_err, i_warn, i_hint, i_info)
+
+	if not servers.hasLsp then
 		return ''
 	end
 
 	---@type string
 	local finalStr
 	if vim.g.s_servers_is_active then
-		finalStr = lspIcon .. servers .. diagnostic()
+		finalStr = lspIcon .. servers.str .. icon_diagnostics
 	else
-		finalStr = lspIcon .. diagnostic()
+		finalStr = lspIcon .. icon_diagnostics
 	end
 
 	return separator .. button(finalStr, 'ToggleServers')
