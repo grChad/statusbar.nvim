@@ -9,6 +9,7 @@
 - [x] Muestra el icono de [supermaven](https://github.com/supermaven-inc/supermaven-nvim), [codeium](https://github.com/Exafunction/codeium.vim).
 - [x] Directorio de trabajo con 3 modos de vista.
 - [ ] puedes modificar los colores como quieras
+- [ ] Soporte para _Speel_, elegir: spelllang, spellsuggest, spelloptions
 
 ## Instalar
 
@@ -41,7 +42,7 @@ Opciones por defecto. Puedes modificar parcial o totalmente todas las opciones.
 
 ```lua
 require('grbar').setup({
-    background = '#292C3C'
+    background = '#232634'
     lsp = {
         icon_error = ' '
         color_error = '#E78284',
