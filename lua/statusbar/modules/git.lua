@@ -1,23 +1,14 @@
 local icons = require('statusbar.constants').icons
 local hl = require('statusbar.constants').hl_groups
 local txt = require('statusbar.utils').txt
+local validateGitStatus = require('statusbar.utils').validateGitStatus
 local separator = require('statusbar.utils').separator()
-
-local gitStatus = function(icon, status)
-	local blank = ''
-	if status == nil then
-		return blank
-	elseif status == 0 then
-		return blank
-	end
-	return icon .. status
-end
 
 ---@return { icons: string, show: boolean }
 local diagnostics = function(status)
-	local add = gitStatus(icons.git.add, status.added)
-	local change = gitStatus(icons.git.change, status.changed)
-	local remove = gitStatus(icons.git.remove, status.removed)
+	local add = validateGitStatus(icons.git.add, status.added)
+	local change = validateGitStatus(icons.git.change, status.changed)
+	local remove = validateGitStatus(icons.git.remove, status.removed)
 
 	local show_diagnostics = add == '' and change == '' and remove == ''
 

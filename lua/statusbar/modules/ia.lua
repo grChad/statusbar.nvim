@@ -1,9 +1,12 @@
-local icons_ia = require('statusbar.constants').icons.ia
+-- local icons_ia = require('statusbar.constants').icons.ia
+local selectTable = require('statusbar.utils').selectTable
+local selectStr = require('statusbar.utils').selectStr
+local selectBool = require('statusbar.utils').selectBool
 local txt = require('statusbar.utils').txt
 local button = require('statusbar.utils').button
 local space = require('statusbar.utils').space()
 local hl = require('statusbar.constants').hl_groups
-local validate = require('statusbar.utils').validate
+-- local validate = require('statusbar.utils').validate
 local default_ia = require('statusbar.constants').opts_default.ia
 
 --------------------------------- [ btn onclick function ] ---------------------------
@@ -22,22 +25,15 @@ vim.cmd([[
 ------------------------------------ [ functions ] ------------------------------------
 local M = {}
 
----@param opt_ia GrConfigIa
-M.supermaven = function(opt_ia)
-	local enabled, icon
+---@param user_ia GrConfigIa
+M.supermaven = function(user_ia)
+	user_ia = selectTable(user_ia, default_ia)
+	---@type GrConfigIaSupermaven
+	local table_supermaven = selectTable(user_ia.supermaven, default_ia.supermaven)
 
-	if validate.isTable(opt_ia) then
-		if validate.isTable(opt_ia.supermaven) then
-			enabled = validate.bool(opt_ia.supermaven.enabled, default_ia.supermaven.enabled)
-			icon = validate.str(opt_ia.supermaven.icon, default_ia.supermaven.icon)
-		else
-			enabled = default_ia.supermaven.enabled
-			icon = default_ia.supermaven.icon
-		end
-	else
-		enabled = default_ia.supermaven.enabled
-		icon = default_ia.supermaven.icon
-	end
+	local enabled, icon
+	enabled = selectBool(table_supermaven.enabled, default_ia.supermaven.enabled)
+	icon = selectStr(table_supermaven.icon, default_ia.supermaven.icon)
 
 	local status_ok, api = pcall(require, 'supermaven-nvim.api')
 	if not status_ok or enabled == false then
@@ -55,22 +51,15 @@ M.supermaven = function(opt_ia)
 	return space .. button(showIcon, 'ToggleSupermaven')
 end
 
----@param opt_ia GrConfigIa
-M.codeium = function(opt_ia)
-	local enabled, icon
+---@param user_ia GrConfigIa
+M.codeium = function(user_ia)
+	user_ia = selectTable(user_ia, default_ia)
+	---@type GrConfigIaCodeium
+	local table_codeium = selectTable(user_ia.codeium, default_ia.codeium)
 
-	if validate.isTable(opt_ia) then
-		if validate.isTable(opt_ia.codeium) then
-			enabled = validate.bool(opt_ia.codeium.enabled, default_ia.codeium.enabled)
-			icon = validate.str(opt_ia.codeium.icon, default_ia.codeium.icon)
-		else
-			enabled = default_ia.codeium.enabled
-			icon = default_ia.codeium.icon
-		end
-	else
-		enabled = default_ia.codeium.enabled
-		icon = default_ia.codeium.icon
-	end
+	local enabled, icon
+	enabled = selectBool(table_codeium.enabled, default_ia.codeium.enabled)
+	icon = selectStr(table_codeium.icon, default_ia.codeium.icon)
 
 	local status_ok, codeium = pcall(function()
 		return vim.api.nvim_call_function('codeium#GetStatusString', {})

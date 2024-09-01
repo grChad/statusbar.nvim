@@ -35,44 +35,55 @@ M.space = function()
 	return M.txt(hl_separator, ' ')
 end
 
----@param userStr string
----@param defaultStr string
-local validateStr = function(userStr, defaultStr)
-	if userStr == nil then
-		return defaultStr
-	elseif userStr == '' then
-		return defaultStr
-	elseif type(userStr) ~= 'string' then
-		return defaultStr
+---@param table_user? table
+---@param table_default table
+---@return table
+M.selectTable = function(table_user, table_default)
+	if table_user == nil then
+		return table_default
+	elseif type(table_user) ~= 'table' then
+		return table_default
 	end
-	return userStr
+	return table_user
 end
 
----@param userBool boolean | nil
----@param defaultBool boolean
-local validateBool = function(userBool, defaultBool)
-	if userBool == nil then
-		return defaultBool
-	elseif type(userBool) ~= 'boolean' then
-		return defaultBool
+---@param str_user? string
+---@param str_default string
+---@return string
+M.selectStr = function(str_user, str_default)
+	if str_user == nil then
+		return str_default
+	elseif str_user == '' then
+		return str_default
+	elseif type(str_user) ~= 'string' then
+		return str_default
 	end
-	return userBool
+	return str_user
 end
 
----@param t table | nil
-local isTable = function(t)
-	if t == nil then
-		return false
-	elseif type(t) ~= 'table' then
-		return false
+---@param bool_use? boolean
+---@param bool_default boolean
+---@return boolean
+M.selectBool = function(bool_use, bool_default)
+	if bool_use == nil then
+		return bool_default
+	elseif type(bool_use) ~= 'boolean' then
+		return bool_default
 	end
-	return true
+	return bool_use
 end
 
-M.validate = {
-	str = validateStr,
-	bool = validateBool,
-	isTable = isTable,
-}
+---@param icon string
+---@param status integer
+---@return string
+M.validateGitStatus = function(icon, status)
+	local blank = ''
+	if status == nil then
+		return blank
+	elseif status == 0 then
+		return blank
+	end
+	return icon .. status
+end
 
 return M

@@ -1,41 +1,28 @@
+local cp = require('statusbar.constants').colors
 local hl = require('statusbar.constants').hl_groups
 local default = require('statusbar.constants').opts_default
-local validate = require('statusbar.utils').validate
-local cp = require('statusbar.constants').colors
+local selectTable = require('statusbar.utils').selectTable
+local selectStr = require('statusbar.utils').selectStr
 
 ---@param config GrConfig
 return function(config)
-	local background, user_color_icon
-	local color_supermaven, color_codeium
+	config = selectTable(config, default)
+	local background = selectStr(config.background, default.background)
 
-	if validate.isTable(config) then
-		background = validate.str(config.background, default.background)
+	---@type GrConfigUser --------------------------------------------------------------
+	local table_user = selectTable(config.user, default.user)
+	local user_color_icon = selectStr(table_user.color_icon, default.user.color_icon)
 
-		if validate.isTable(config.user) then
-			user_color_icon = validate.str(config.user.color_icon, default.user.color_icon)
-		else
-			user_color_icon = default.user.color_icon
-		end
+	---@type GrConfigIa ----------------------------------------------------------------
+	local table_ia = selectTable(config.ia, default.ia)
 
-		if validate.isTable(config.ia) then
-			if validate.isTable(config.ia.supermaven) then
-				color_supermaven = validate.str(config.ia.supermaven.color_icon, default.ia.supermaven.color_icon)
-			else
-				color_supermaven = default.ia.supermaven.color_icon
-			end
+	---@type GrConfigIaSupermaven
+	local table_supermaven = selectTable(table_ia.supermaven, default.ia.supermaven)
+	local color_supermaven = selectStr(table_supermaven.color_icon, default.ia.supermaven.color_icon)
 
-			if validate.isTable(config.ia.codeium) then
-				color_codeium = validate.str(config.ia.codeium.color_icon, default.ia.codeium.color_icon)
-			else
-				color_codeium = default.ia.codeium.color_icon
-			end
-		end
-	else
-		background = default.background
-		user_color_icon = default.user.color_icon
-		color_supermaven = default.ia.supermaven.color_icon
-		color_codeium = default.ia.codeium.color_icon
-	end
+	---@type GrConfigIaCodeium
+	local table_codeium = selectTable(table_ia.codeium, default.ia.codeium)
+	local color_codeium = selectStr(table_codeium.color_icon, default.ia.codeium.color_icon)
 
 	local pre_hl = {
 		[hl.separator] = { fg = cp.whiteSmoke, bg = background },

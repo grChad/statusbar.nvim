@@ -1,8 +1,10 @@
-local user_default = require('statusbar.constants').opts_default.user
-local validate = require('statusbar.utils').validate
-local hl = require('statusbar.constants').hl_groups
 local txt = require('statusbar.utils').txt
 local button = require('statusbar.utils').button
+local selectTable = require('statusbar.utils').selectTable
+local selectStr = require('statusbar.utils').selectStr
+local selectBool = require('statusbar.utils').selectBool
+local user_default = require('statusbar.constants').opts_default.user
+local hl = require('statusbar.constants').hl_groups
 
 --------------------------------- [ btn onclick function ] ---------------------------
 vim.cmd([[
@@ -15,17 +17,12 @@ vim.cmd([[
 ---@param user GrConfigUser
 ---@return string
 return function(user)
-	local enabled, icon, name
+	user = selectTable(user, user_default)
 
-	if validate.isTable(user) then
-		enabled = validate.bool(user.enabled, user_default.enabled)
-		icon = validate.str(user.icon, user_default.icon)
-		name = validate.str(user.name, user_default.name)
-	else
-		enabled = user_default.enabled
-		icon = user_default.icon
-		name = user_default.name
-	end
+	local enabled, icon, name
+	enabled = selectBool(user.enabled, user_default.enabled)
+	icon = selectStr(user.icon, user_default.icon)
+	name = selectStr(user.name, user_default.name)
 
 	if not enabled then
 		return ''
