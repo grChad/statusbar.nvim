@@ -4,14 +4,21 @@ local default = require('statusbar.constants').opts_default
 local selectTable = require('statusbar.utils').selectTable
 local selectStr = require('statusbar.utils').selectStr
 
----@param config GrConfig
 return function(config)
+	---@type GrConfig
 	config = selectTable(config, default)
 	local background = selectStr(config.background, default.background)
 
 	---@type GrConfigUser --------------------------------------------------------------
 	local table_user = selectTable(config.user, default.user)
 	local user_color_icon = selectStr(table_user.color_icon, default.user.color_icon)
+
+	---@type GrConfigGit ---------------------------------------------------------------
+	local table_git = selectTable(config.git, default.git)
+	local color_add = selectStr(table_git.color_add, default.git.color_add)
+	local color_remove = selectStr(table_git.color_remove, default.git.color_remove)
+	local color_change = selectStr(table_git.color_change, default.git.color_remove)
+	local color_branch = selectStr(table_git.color_branch, default.git.color_branch)
 
 	---@type GrConfigIa ----------------------------------------------------------------
 	local table_ia = selectTable(config.ia, default.ia)
@@ -44,7 +51,10 @@ return function(config)
 		[hl.lspIcon] = { fg = cp.blue_2, bg = background },
 
 		-- Git
-		[hl.gitIcon] = { fg = cp.git, bg = background },
+		[hl.gitIcon] = { fg = color_branch, bg = background },
+		[hl.gitAdd] = { fg = color_add, bg = background },
+		[hl.gitRemove] = { fg = color_remove, bg = background },
+		[hl.gitChange] = { fg = color_change, bg = background },
 
 		-- user
 		[hl.userIcon] = { fg = user_color_icon, bg = background },

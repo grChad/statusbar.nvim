@@ -6,7 +6,7 @@ local txt = require('statusbar.utils').txt
 local button = require('statusbar.utils').button
 local space = require('statusbar.utils').space()
 local hl = require('statusbar.constants').hl_groups
--- local validate = require('statusbar.utils').validate
+local trimAndPad = require('statusbar.utils').trimAndPad
 local default_ia = require('statusbar.constants').opts_default.ia
 
 --------------------------------- [ btn onclick function ] ---------------------------
@@ -43,9 +43,9 @@ M.supermaven = function(user_ia)
 	local showIcon
 
 	if api.is_running() then
-		showIcon = txt(hl.supermaven, icon)
+		showIcon = txt(hl.supermaven, trimAndPad(icon, 2))
 	else
-		showIcon = txt(hl.subText, icon)
+		showIcon = txt(hl.subText, trimAndPad(icon, 2))
 	end
 
 	return space .. button(showIcon, 'ToggleSupermaven')
@@ -71,9 +71,9 @@ M.codeium = function(user_ia)
 	local showIcon
 
 	if codeium == 'OFF' then
-		showIcon = txt(hl.subText, icon)
+		showIcon = txt(hl.subText, trimAndPad(icon, 2))
 	else
-		showIcon = txt(hl.codeium, icon)
+		showIcon = txt(hl.codeium, trimAndPad(icon, 2))
 	end
 	return space .. button(showIcon, 'ToggleCodeium')
 end

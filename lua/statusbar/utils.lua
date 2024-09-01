@@ -76,14 +76,36 @@ end
 ---@param icon string
 ---@param status integer
 ---@return string
-M.validateGitStatus = function(icon, status)
+M.gitStatusAndPad = function(icon, status)
 	local blank = ''
 	if status == nil then
 		return blank
 	elseif status == 0 then
 		return blank
 	end
-	return icon .. status
+	return M.trimAndPad(icon, 3) .. status
+end
+
+---@param str string
+---@return string
+M.trim = function(str)
+	return str:match('^%s*(.-)%s*$') or ''
+end
+
+---@alias TrimAndPadOpts 2 | 3
+---@param str string
+---@param len TrimAndPadOpts
+---@return string
+M.trimAndPad = function(str, len)
+	str = M.trim(str)
+
+	if len == 2 then
+		return str .. ' '
+	elseif len == 3 then
+		return ' ' .. str .. ' '
+	else
+		return str
+	end
 end
 
 return M

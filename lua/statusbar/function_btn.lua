@@ -20,6 +20,16 @@ M.toggle_servers = function()
 	vim.api.nvim_command('redraw!')
 end
 
+M.showBranchName = function()
+	if vim.g.s_show_name_branch then
+		vim.g.s_show_name_branch = false
+	else
+		vim.g.s_show_name_branch = true
+	end
+
+	vim.api.nvim_command('redraw!')
+end
+
 M.supermaven = function()
 	local status_ok, api = pcall(require, 'supermaven-nvim.api')
 

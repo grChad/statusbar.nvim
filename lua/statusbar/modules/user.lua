@@ -1,10 +1,11 @@
-local txt = require('statusbar.utils').txt
-local button = require('statusbar.utils').button
 local selectTable = require('statusbar.utils').selectTable
 local selectStr = require('statusbar.utils').selectStr
 local selectBool = require('statusbar.utils').selectBool
 local user_default = require('statusbar.constants').opts_default.user
 local hl = require('statusbar.constants').hl_groups
+local txt = require('statusbar.utils').txt
+local button = require('statusbar.utils').button
+local trimAndPad = require('statusbar.utils').trimAndPad
 
 --------------------------------- [ btn onclick function ] ---------------------------
 vim.cmd([[
@@ -28,7 +29,7 @@ return function(user)
 		return ''
 	end
 
-	local icon_os = txt(hl.userIcon, icon)
+	local icon_os = txt(hl.userIcon, trimAndPad(icon, 2))
 	local user_name = txt(hl.text, name)
 
 	---@type string

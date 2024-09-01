@@ -16,8 +16,12 @@ M.colors = {
 	mantle = '#292C3C',
 	dark = '#181818',
 
+	git = '#f26359',
+	gitAdd = '#B2E292',
+	gitRemove = '#E78284',
+	gitChange = '#E5C890',
+
 	fedora = '#51A2DA',
-	git = '#FB7D68',
 	supermaven = '#6CC644',
 	codeium = '#09B6A2',
 }
@@ -29,7 +33,7 @@ M.icons = {
 	},
 	percent_bar = { '▁', '▂', '▃', '▄', '▅', '▆', '▇', '█' },
 	diagnostic = { error = ' ', warning = ' ', hint = '󰌵 ', info = ' ' },
-	git = { branch = ' ', add = '  ', remove = '  ', change = '  ' },
+	git = { branch = ' ', add = ' ', remove = ' ', change = ' ' },
 	others = { empty = '', lsp = ' ', directory = '󰉋 ', user = ' ' },
 	ia = {
 		supermaven = ' ',
@@ -44,6 +48,16 @@ M.opts_default = {
 		icon = M.icons.others.user,
 		color_icon = M.colors.fedora,
 		name = 'User',
+	},
+	git = {
+		icon_add = M.icons.git.add,
+		color_add = M.colors.gitAdd,
+		icon_remove = M.icons.git.remove,
+		color_remove = M.colors.gitRemove,
+		icon_change = M.icons.git.change,
+		color_change = M.colors.gitChange,
+		icon_branch = M.icons.git.branch,
+		color_branch = M.colors.git,
 	},
 	ia = {
 		codeium = {
@@ -87,9 +101,9 @@ M.hl_groups = {
 
 	-- git
 	gitIcon = 'S_GitIcon',
-	gitAdd = 'GitSignsAdd',
-	gitRemove = 'GitSignsDelete',
-	gitChange = 'GitSignsChange',
+	gitAdd = 'S_GitSignsAdd',
+	gitRemove = 'S_GitSignsDelete',
+	gitChange = 'S_GitSignsChange',
 
 	-- Linux
 	userIcon = 'S_UserIcon',

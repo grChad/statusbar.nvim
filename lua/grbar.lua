@@ -15,15 +15,18 @@ vim.g.s_servers_is_active = false
 vim.g.s_show_user = false
 vim.g.s_status_cwd = 0 -- % 3 == 0
 vim.g.s_position_is_active = false
+vim.g.s_show_name_branch = true
 
 ---@alias GrConfigUser { enabled?: boolean, icon?: string, color_icon?: string, name?: string }
 ---@alias GrConfigIaCodeium { enabled?: boolean, icon?: string, color_icon?: string}
 ---@alias GrConfigIaSupermaven { enabled?: boolean, icon?: string, color_icon?: string}
 ---@alias GrConfigIa {codeium?: GrConfigIaCodeium, supermaven?: GrConfigIaSupermaven}
+---@alias GrConfigGit {icon_add?: string, color_add?: string, icon_remove?: string, color_remove?: string, icon_change?: string, color_change?: string, icon_branch?: string, color_branch?: string}
 
 ---@class GrConfig
 ---@field background? string
 ---@field user? GrConfigUser
+---@field git? GrConfigGit
 ---@field ia? GrConfigIa
 
 ---@type GrConfig
@@ -38,7 +41,7 @@ M.StatusLine = function()
 		lsp(),
 		'%=',
 		'%=',
-		git(),
+		git(opts.git),
 		user(opts.user),
 		directory(),
 		ia.supermaven(opts.ia),
