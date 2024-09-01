@@ -30,6 +30,20 @@ M.showBranchName = function()
 	vim.api.nvim_command('redraw!')
 end
 
+M.activeSpell = function()
+	if vim.g.s_show_spell then
+		vim.g.s_show_spell = false
+		vim.o.spell = false
+		vim.notify('  Deshabilitando Spellchecking ... 😭😭')
+	else
+		vim.g.s_show_spell = true
+		vim.o.spell = true
+		vim.notify('  Habilitando Spellchecking ... 😃😃')
+	end
+
+	vim.api.nvim_command('redraw!')
+end
+
 M.supermaven = function()
 	local status_ok, api = pcall(require, 'supermaven-nvim.api')
 

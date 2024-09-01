@@ -86,7 +86,17 @@ require('grbar').setup({
 })
 ```
 
-Los colores pueden ser por nombres como `black` o hexadecimales `'#181818'`. Y de preferencia el uso de hexadecimales.
+#### colores
+
+Los colores pueden ser por nombres como `black` o hexadecimales `'#181818'`. Pero de preferencia use hexadecimales `'#RRGGBB'`, sin agregar el valor alpha que no soporta _Nvim_.
+
+#### iconos
+
+No se preocupe de los espacios que agrega a su iconos, por defecto se filtra los espacios en blanco de los extremos y se reasigna el espacio necesario.
+
+#### spell checking
+
+No deshabilitar `'netrwPlugin'` para mejorar la performance. Es requerido para descargar los paquetes de idiomas diferentes al ingles.
 
 ## Zonas Clickebles
 
