@@ -8,7 +8,7 @@
 - [x] **Clickeable!!:** Para tener más y más opciones. Lo puedes ver [aquí](#zonas-clickebles).
 - [x] Muestra el icono de [supermaven](https://github.com/supermaven-inc/supermaven-nvim), [codeium](https://github.com/Exafunction/codeium.vim).
 - [x] Directorio de trabajo con 3 modos de vista.
-- [ ] puedes modificar los colores como quieras
+- [x] puedes modificar los colores como quieras
 - [ ] Soporte para _Speel_, elegir: spelllang, spellsuggest, spelloptions
 
 ## Instalar
@@ -43,6 +43,9 @@ Opciones por defecto. Puedes modificar parcial o totalmente todas las opciones.
 ```lua
 require('grbar').setup({
     background = '#232634'
+    foreground =  '#C6D0F5',
+    sub_foreground = '#a5adce',
+    separator_color = '#DCD9D5',
     lsp = {
         icon_error = ' '
         color_error = '#E78284',
@@ -104,14 +107,16 @@ No deshabilitar `'netrwPlugin'` para mejorar la performance. Es requerido para d
 
 **lsp:** Muestra los nombres de los Lsp en uso.
 
+**Git:** Muestra y oculta el nombre de la rama.
+
+**Usuario:** Al darle click alterna el nombre de usuario.
+
+**Directorio:** Tiene 3 vistas que van cambiando y alternando con los clicks que reciba.
+
+**Spell:** habilita y deshabilitar el corrector ortografico.
+
 **codeium:** Al dar click habilita y deshabilita [codeium](https://github.com/Exafunction/codeium.vim).
 
 **supermaven:** Al dar click habilita y deshabilita [supermaven](https://github.com/supermaven-inc/supermaven-nvim)
 
 **Position:** Muestra o oculta el eje Y con un icono correspondiente.
-
-**Directorio:** Tiene 3 vistas que van cambiando y alternando con los clicks que reciba.
-
-**Usuario:** Al darle click alterna el nombre de usuario.
-
-**Git:** Muestra y oculta el nombre de la rama.

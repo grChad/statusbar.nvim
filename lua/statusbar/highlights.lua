@@ -8,6 +8,9 @@ return function(config)
 	---@type GrConfig
 	config = selectTable(config, default)
 	local background = selectStr(config.background, default.background)
+	local foreground = selectStr(config.foreground, default.foreground)
+	local sub_foreground = selectStr(config.sub_foreground, default.sub_foreground)
+	local separator_color = selectStr(config.separator_color, default.separator_color)
 
 	---@type GrConfigLsp ----------------------------------------------------------------
 	local table_lsp = selectTable(config.lsp, default.lsp)
@@ -40,10 +43,10 @@ return function(config)
 
 	-- NOTE: if you want to change the colors of the icons, you need to change the hl_groups
 	local pre_hl = {
-		[hl.separator] = { fg = cp.whiteSmoke, bg = background },
-		[hl.text] = { fg = cp.text, bg = background },
-		[hl.textBold] = { fg = cp.text, bg = background, bold = true },
-		[hl.subText] = { fg = cp.subtext, bg = background },
+		[hl.separator] = { fg = separator_color, bg = background },
+		[hl.text] = { fg = foreground, bg = background },
+		[hl.textBold] = { fg = foreground, bg = background, bold = true },
+		[hl.subText] = { fg = sub_foreground, bg = background },
 
 		-- MODES
 		[hl.normalMode] = { fg = cp.dark, bg = cp.gold, bold = true },

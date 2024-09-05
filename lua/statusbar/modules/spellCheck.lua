@@ -20,7 +20,7 @@ return function()
 		vim.opt.spellsuggest = 'best,9' -- Muestra las 9 mejores opciones de correccion.
 		vim.opt.spelloptions = 'camel' -- Para que no muestre error ortografico en los CamelCase
 
-		str = txt(hl.separator, icon_spell)
+		str = txt(hl.text, icon_spell)
 	else
 		str = txt(hl.subText, icon_spell)
 	end

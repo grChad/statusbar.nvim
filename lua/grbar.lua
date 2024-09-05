@@ -31,6 +31,9 @@ vim.g.s_show_name_branch = true
 
 ---@class GrConfig
 ---@field background? string
+---@field foreground? string
+---@field sub_foreground? string
+---@field separator_color? string
 ---@field lsp? GrConfigLsp
 ---@field git? GrConfigGit
 ---@field user? GrConfigUser

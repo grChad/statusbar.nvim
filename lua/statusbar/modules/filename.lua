@@ -66,8 +66,8 @@ local file_icon = function(background)
 	return txt(hl.iconFtColor, ' ' .. fileIcon .. ' ')
 end
 
----@param bg string
 return function(bg)
+	---@type string
 	bg = selectStr(bg, bg_default)
 
 	local fileName = (vim.fn.expand('%') == '' and 'Empty ') or vim.fn.expand('%:t')

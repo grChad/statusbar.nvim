@@ -42,6 +42,9 @@ M.icons = {
 
 M.opts_default = {
 	background = M.colors.crust,
+	foreground = M.colors.text,
+	sub_foreground = M.colors.subtext,
+	separator_color = M.colors.whiteSmoke,
 	user = {
 		enabled = true,
 		icon = M.icons.others.user,
