@@ -19,6 +19,7 @@ vim.g.s_show_spell = false
 vim.g.s_position_is_active = false
 vim.g.s_show_name_branch = true
 
+---@alias GrConfigModes 'foreground' | 'background'
 ---@alias GrConfigUser { enabled?: boolean, icon?: string, color_icon?: string, name?: string }
 
 ---@alias GrConfigIaCodeium { enabled?: boolean, icon?: string, color_icon?: string }
@@ -34,6 +35,7 @@ vim.g.s_show_name_branch = true
 ---@field foreground? string
 ---@field sub_foreground? string
 ---@field separator_color? string
+---@field mode_style? GrConfigModes
 ---@field lsp? GrConfigLsp
 ---@field git? GrConfigGit
 ---@field user? GrConfigUser
@@ -46,7 +48,7 @@ local M = {}
 
 M.StatusLine = function()
 	return table.concat({
-		modes(),
+		modes(opts.mode_style),
 		filename(opts.background),
 		lsp(opts.lsp),
 		'%=',

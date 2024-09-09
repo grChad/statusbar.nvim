@@ -11,6 +11,12 @@ return function(config)
 	local foreground = selectStr(config.foreground, default.foreground)
 	local sub_foreground = selectStr(config.sub_foreground, default.sub_foreground)
 	local separator_color = selectStr(config.separator_color, default.separator_color)
+	local mode_style = selectStr(config.mode_style, default.mode_style)
+
+	local is_bg_mode = true
+	if mode_style == 'foreground' then
+		is_bg_mode = false
+	end
 
 	---@type GrConfigLsp ----------------------------------------------------------------
 	local table_lsp = selectTable(config.lsp, default.lsp)
@@ -49,14 +55,46 @@ return function(config)
 		[hl.subText] = { fg = sub_foreground, bg = background },
 
 		-- MODES
-		[hl.normalMode] = { fg = cp.dark, bg = cp.gold, bold = true },
-		[hl.insertMode] = { fg = cp.dark, bg = cp.blue_2, bold = true },
-		[hl.visualMode] = { fg = cp.dark, bg = cp.teal_1, bold = true },
-		[hl.replaceMode] = { fg = cp.dark, bg = cp.red, bold = true },
-		[hl.terminalMode] = { fg = cp.dark, bg = cp.blue_1, bold = true },
-		[hl.confirmMode] = { fg = cp.dark, bg = cp.teal_2, bold = true },
-		[hl.commandMode] = { fg = cp.dark, bg = cp.green_2, bold = true },
-		[hl.selectMode] = { fg = cp.dark, bg = cp.orange, bold = true },
+		[hl.normalMode] = {
+			fg = is_bg_mode and cp.dark or cp.gold,
+			bg = is_bg_mode and cp.gold or background,
+			bold = true,
+		},
+		[hl.insertMode] = {
+			fg = is_bg_mode and cp.dark or cp.blue_2,
+			bg = is_bg_mode and cp.blue_2 or background,
+			bold = true,
+		},
+		[hl.visualMode] = {
+			fg = is_bg_mode and cp.dark or cp.teal_1,
+			bg = is_bg_mode and cp.teal_1 or background,
+			bold = true,
+		},
+		[hl.replaceMode] = {
+			fg = is_bg_mode and cp.dark or cp.red,
+			bg = is_bg_mode and cp.red or background,
+			bold = true,
+		},
+		[hl.terminalMode] = {
+			fg = is_bg_mode and cp.dark or cp.blue_1,
+			bg = is_bg_mode and cp.blue_1 or background,
+			bold = true,
+		},
+		[hl.confirmMode] = {
+			fg = is_bg_mode and cp.dark or cp.teal_2,
+			bg = is_bg_mode and cp.teal_2 or background,
+			bold = true,
+		},
+		[hl.commandMode] = {
+			fg = is_bg_mode and cp.dark or cp.green_2,
+			bg = is_bg_mode and cp.green_2 or background,
+			bold = true,
+		},
+		[hl.selectMode] = {
+			fg = is_bg_mode and cp.dark or cp.orange,
+			bg = is_bg_mode and cp.orange or background,
+			bold = true,
+		},
 
 		-- LSP
 		[hl.lspIcon] = { fg = cp.blue_2, bg = background },

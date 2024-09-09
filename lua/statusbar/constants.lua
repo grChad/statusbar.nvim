@@ -45,6 +45,7 @@ M.opts_default = {
 	foreground = M.colors.text,
 	sub_foreground = M.colors.subtext,
 	separator_color = M.colors.whiteSmoke,
+	mode_style = 'background', -- 'foreground' | 'background'
 	user = {
 		enabled = true,
 		icon = M.icons.others.user,
