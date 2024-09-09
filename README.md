@@ -46,6 +46,7 @@ require('grbar').setup({
     foreground =  '#C6D0F5',
     sub_foreground = '#a5adce',
     separator_color = '#DCD9D5',
+    mode_style = 'background', -- 'foreground' | 'background'
     lsp = {
         icon_error = ' '
         color_error = '#E78284',
