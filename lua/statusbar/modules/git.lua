@@ -17,7 +17,7 @@ vim.cmd([[
 ]])
 
 ------------------------------------ [ functions ] ------------------------------------
----@return { icons: string, show: boolean }
+---@return string
 local diagnostics = function(status, add, remove, change)
 	add = gitStatusAndPad(add, status.added)
 	remove = gitStatusAndPad(remove, status.removed)
@@ -25,12 +25,18 @@ local diagnostics = function(status, add, remove, change)
 
 	local show_diagnostics = add == '' and change == '' and remove == ''
 
+	local caret_left = icons.separator.arrow.left
+	if show_diagnostics then
+		caret_left = ''
+	end
+
 	-- add highlight group
 	add = txt(hl.gitAdd, add)
 	remove = txt(hl.gitRemove, remove)
 	change = txt(hl.gitChange, change)
+	caret_left = txt(hl.gitIcon, caret_left)
 
-	return { icons = add .. remove .. change, show = show_diagnostics }
+	return add .. remove .. change .. caret_left
 end
 
 return function(table_git)
@@ -39,7 +45,7 @@ return function(table_git)
 	local i_add = selectStr(table_git.icon_add, default_git.icon_add)
 	local i_remove = selectStr(table_git.icon_remove, default_git.icon_remove)
 	local i_change = selectStr(table_git.icon_change, default_git.icon_change)
-	local i_branch = selectStr(table_git.icon_branch, default_git.icon_branch)
+	local branch_icon = selectStr(table_git.icon_branch, default_git.icon_branch)
 
 	if not vim.b.gitsigns_head or vim.b.gitsigns_git_status then
 		return ''
@@ -48,24 +54,18 @@ return function(table_git)
 	local git_status = vim.b.gitsigns_status_dict
 	local get_diagnostics = diagnostics(git_status, i_add, i_remove, i_change)
 
-	local caret_left = icons.separator.arrow.left
-	if get_diagnostics.show then
-		caret_left = ''
-	end
-
-	local name_branch = git_status.head
-	local branch = caret_left .. trimAndPad(i_branch, 2)
+	local branch_name = git_status.head
 
 	-- add highlight group
-	branch = txt(hl.gitIcon, branch)
-	name_branch = txt(hl.gitIcon, name_branch)
+	branch_icon = txt(hl.gitIcon, trimAndPad(branch_icon, 2))
+	branch_name = txt(hl.gitIcon, branch_name)
 
 	---@type string
 	local str
 	if vim.g.s_show_name_branch then
-		str = get_diagnostics.icons .. branch .. name_branch
+		str = get_diagnostics .. branch_icon .. branch_name
 	else
-		str = get_diagnostics.icons .. branch
+		str = get_diagnostics .. branch_icon
 	end
 
 	return button(str, 'ShowBranchName') .. separator
