@@ -48,7 +48,7 @@ local M = {}
 
 M.StatusLine = function()
 	return table.concat({
-		modes(opts.mode_style),
+		modes(),
 		filename(opts.background),
 		lsp(opts.lsp),
 		'%=',
