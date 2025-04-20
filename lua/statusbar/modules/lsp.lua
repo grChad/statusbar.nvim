@@ -20,7 +20,7 @@ local getServers = function()
 	local icon = icons.separator.arrow.right
 	local servers = {}
 
-	local clients = vim.lsp.get_active_clients({ bufnr = 0 })
+	local clients = vim.lsp.get_clients({ bufnr = 0 })
 	for _, server in pairs(clients) do
 		table.insert(servers, server.name)
 	end
